@@ -124,7 +124,7 @@ var cond = random(2) + 1; // (1-6)
 
 // ############################## BP Changes Configuration settings ##############################
 // FIXME: ask ppl about whether the sentence sounds natural?
-speakers = shuffle([["ì² ìˆ˜", "ê°€", "ëŠ”"], ["ë¯¼ì¤€", "ì´", "ì€"], ["ì§€í˜¸", "ê°€", "ëŠ”"], ["ì£¼ì›", "ì´", "ì€"], ["ì§€ìš°", "ê°€", "ëŠ”"], ["ì„œì—°", "ì´", "ì€"], ["ë¯¼ì„œ", "ê°€", "ëŠ”"], ["ì§€ì•„", "ê°€", "ëŠ”"], ["í•˜ì€", "ì´", "ëŠ”"], ["ì„œìœ¤", "ì´", "ì€"], ["íƒœë¯¼", "ì´", "ì€"], ["ìž¬ìŠ¹", "ì´", "ì€"], ["ì€ì§€", "ê°€", "ëŠ”"], ["ì‚¬ëž‘", "ì´", "ëŠ”"], ["ìš°ì„", "ì´", "ì€"], ["ì„±ì§„", "ì´", "ì€"], ["í•´ë ¹", "ì´", "ì€"], ["ì£¼ë¯¸", "ê°€", "ëŠ”"]]);
+speakers = shuffle([["철수", "가", "는"], ["민준", "이", "은"], ["지호", "가", "는"], ["주원", "이", "은"], ["지우", "가", "는"], ["서연", "이", "은"], ["민서", "가", "는"], ["지아", "가", "는"], ["하은", "이", "는"], ["서윤", "이", "은"], ["태민", "이", "은"], ["재승", "이", "은"], ["은지", "가", "는"], ["사랑", "이", "는"], ["우석", "이", "은"], ["성진", "이", "은"], ["해령", "이", "은"], ["주미", "가", "는"]]);
 
 var myimages = new Array();
 
@@ -206,9 +206,9 @@ preloading("images/NQ_balloon_post.jpg",
 var sents = {
     scales: {
         training1: {
-            //FIXME: ì´ê²ƒì€, ë´ì£¼ì„¸ìš”.
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJì˜ OBJPAR2 ìž˜ ë³´ì„¸ìš”.",
+            //FIXME: 이것은, 봐주세요.
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJ의 OBJPAR2 잘 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 LNV.",
             scope: "",
             neg: "NA",
@@ -217,8 +217,8 @@ var sents = {
 
         },
         training2: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJì˜ OBJPAR2 ìž˜ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJ의 OBJPAR2 잘 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "",
             neg: "NA",
@@ -227,166 +227,166 @@ var sents = {
 
         },
         test1: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            //            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
-            sent_post: "ê²°êµ­ ì–´ë–»ê²Œ ë˜ì—ˆëŠ”ì§€ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            //            sent_post: "SUBJPART1 한 일을 보세요.",
+            sent_post: "결국 어떻게 되었는지 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "QN",
             neg: "short",
             quant: "regular",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         test2: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            //            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
-            sent_post: "ê²°êµ­ ì–´ë–»ê²Œ ë˜ì—ˆëŠ”ì§€ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            //            sent_post: "SUBJPART1 한 일을 보세요.",
+            sent_post: "결국 어떻게 되었는지 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "NQ",
             neg: "short",
             quant: "regular",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
 
         },
         test3: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            //            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
-            sent_post: "ê²°êµ­ ì–´ë–»ê²Œ ë˜ì—ˆëŠ”ì§€ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            //            sent_post: "SUBJPART1 한 일을 보세요.",
+            sent_post: "결국 어떻게 되었는지 보세요.",
             sent_quant: "SUBJPART1 QUANT2 OBJPAR2 SNV.",
             scope: "QN+",
             quant: "moreThan",
             neg: "short",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         test4: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            //            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
-            sent_post: "ê²°êµ­ ì–´ë–»ê²Œ ë˜ì—ˆëŠ”ì§€ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            //            sent_post: "SUBJPART1 한 일을 보세요.",
+            sent_post: "결국 어떻게 되었는지 보세요.",
             sent_quant: "SUBJPART1 QUANT2 OBJPAR2 LNV.",
             neg: "short",
             quant: "moreThan",
             scope: "NQ+",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         test5: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            //            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
-            sent_post: "ê²°êµ­ ì–´ë–»ê²Œ ë˜ì—ˆëŠ”ì§€ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            //            sent_post: "SUBJPART1 한 일을 보세요.",
+            sent_post: "결국 어떻게 되었는지 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 LNV.",
             scope: "QN",
             neg: "long",
             quant: "regular",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         test6: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            //            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
-            sent_post: "ê²°êµ­ ì–´ë–»ê²Œ ë˜ì—ˆëŠ”ì§€ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            //            sent_post: "SUBJPART1 한 일을 보세요.",
+            sent_post: "결국 어떻게 되었는지 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 LNV.",
             scope: "NQ",
             neg: "long",
             quant: "regular",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         test7: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            //            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
-            sent_post: "ê²°êµ­ ì–´ë–»ê²Œ ë˜ì—ˆëŠ”ì§€ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            //            sent_post: "SUBJPART1 한 일을 보세요.",
+            sent_post: "결국 어떻게 되었는지 보세요.",
             sent_quant: "SUBJPART1 QUANT2 OBJPAR2 LNV.",
             scope: "QN+",
             neg: "long",
             quant: "moreThan",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         test8: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            //            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
-            sent_post: "ê²°êµ­ ì–´ë–»ê²Œ ë˜ì—ˆëŠ”ì§€ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            //            sent_post: "SUBJPART1 한 일을 보세요.",
+            sent_post: "결국 어떻게 되었는지 보세요.",
             sent_quant: "SUBJPART1 QUANT2 OBJPAR2 LNV.",
             scope: "NQ+",
             neg: "long",
             quant: "moreThan",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
 
         filler1: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJPART1 한 일을 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "filler",
             //            pre_sent: "PRE_SENT"
             neg: "NA",
             quant: "NA",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         filler2: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJPART1 한 일을 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "filler",
             //            pre_sent: "PRE_SENT"
             neg: "NA",
             quant: "NA",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         filler3: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJPART1 한 일을 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "filler",
             //            pre_sent: "PRE_SENT"
             neg: "NA",
             quant: "NA",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         filler4: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJPART1 한 일을 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "filler",
             //            pre_sent: "PRE_SENT"
             neg: "NA",
             quant: "NA",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         filler5: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJPART1 한 일을 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "filler",
             //            pre_sent: "PRE_SENT"
             neg: "NA",
             quant: "NA",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         filler6: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJPART1 한 일을 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "filler",
             //            pre_sent: "PRE_SENT"
             neg: "NA",
             quant: "NA",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         filler7: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJPART1 한 일을 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "filler",
             //            pre_sent: "PRE_SENT"
             neg: "NA",
             quant: "NA",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
         filler8: {
-            sent_pre: "ë‹¤ìŒì€ SUBJì˜ OBJìž…ë‹ˆë‹¤.",
-            sent_post: "SUBJPART1 í•œ ì¼ì„ ë³´ì„¸ìš”.",
+            sent_pre: "다음은 SUBJ의 OBJ입니다.",
+            sent_post: "SUBJPART1 한 일을 보세요.",
             sent_quant: "SUBJPART1 QUANT1 OBJPAR2 SNV.",
             scope: "filler",
             //            pre_sent: "PRE_SENT"
             neg: "NA",
             quant: "NA",
-            pre_sent: "PRE_SENT ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”?"
+            pre_sent: "PRE_SENT 과연 어떻게 되었을까요?"
         },
     },
 
@@ -400,12 +400,12 @@ var sents = {
             SUBJ: speakers[0][0],
             PART1: speakers[0][1],
             PART2: speakers[0][2],
-            SNV: "ì•ˆ ê°€ì§€ê³  ìžˆë‹¤",
-            LNV: "ê°€ì§€ê³  ìžˆì§€ ì•Šë‹¤",
-            QUANT1: "ë„¤ ê°œì˜ ",
-            QUANT2: "ë„¤ ê°œ ì´ìƒì˜",
-            OBJ: "ê³°ì¸í˜•",
-            PAR2: "ì„"
+            SNV: "안 가지고 있다",
+            LNV: "가지고 있지 않다",
+            QUANT1: "네 개의 ",
+            QUANT2: "네 개 이상의",
+            OBJ: "곰인형",
+            PAR2: "을"
         },
         training2: {
             pre_context: "images/training002.jpg",
@@ -416,252 +416,252 @@ var sents = {
             SUBJ: speakers[1][0],
             PART1: speakers[1][1],
             PART2: speakers[1][2],
-            SNV: "ì•ˆ ê°€ì§€ê³  ìžˆë‹¤",
-            LNV: "ê°€ì§€ê³  ìžˆì§€ ì•Šë‹¤",
-            QUANT1: "ë‘ ë§ˆë¦¬ì˜ ",
-            QUANT2: "ë‘ ë§ˆë¦¬ ì´ìƒì˜",
-            OBJ: "ê³ ì–‘ì´",
-            PAR2: "ë¥¼"
+            SNV: "안 가지고 있다",
+            LNV: "가지고 있지 않다",
+            QUANT1: "두 마리의 ",
+            QUANT2: "두 마리 이상의",
+            OBJ: "고양이",
+            PAR2: "를"
         },
         balloon: {
             pre_context: "images/scope_balloon_pre.jpg",
-            pre_sent_QN_plus: "í’ì„ ì„ ì—¬ëŸ ê°œ ë¶ˆì–´ë†“ì•˜ìŠµë‹ˆë‹¤. ê²Œìž„ì—ì„œ ì´ê¸°ë ¤ë©´ SUBJPART2 í’ì„ ì„ ëª¨ë‘ í„°íŠ¸ë ¤ì•¼í•©ë‹ˆë‹¤.",
-            pre_sent_QN: "í’ì„ ì„ ì—¬ì„¯ ê°œ ë¶ˆì–´ë†“ì•˜ìŠµë‹ˆë‹¤. ê²Œìž„ì—ì„œ ì´ê¸°ë ¤ë©´ SUBJPART2 í’ì„ ì„ ëª¨ë‘ í„°íŠ¸ë ¤ì•¼í•©ë‹ˆë‹¤.",
-            pre_sent_NQ: "í’ì„ ì„ ë„¤ ê°œ ë¶ˆì–´ë†“ì•˜ìŠµë‹ˆë‹¤. ê²Œìž„ì—ì„œ ì´ê¸°ë ¤ë©´ SUBJPART2 ì´ ì¤‘ ì„¸ ê°œ ì´ìƒ í„°íŠ¸ë ¤ì•¼í•©ë‹ˆë‹¤.", // ë°›ìŠµë‹ˆë‹¤
+            pre_sent_QN_plus: "풍선을 여덟 개 불어놓았습니다. 게임에서 이기려면 SUBJPART2 풍선을 모두 터트려야합니다.",
+            pre_sent_QN: "풍선을 여섯 개 불어놓았습니다. 게임에서 이기려면 SUBJPART2 풍선을 모두 터트려야합니다.",
+            pre_sent_NQ: "풍선을 네 개 불어놓았습니다. 게임에서 이기려면 SUBJPART2 이 중 세 개 이상 터트려야합니다.", // 받습니다
             sent_context: "images/scope_balloon_post.jpg",
             SUBJ: speakers[2][0],
             PART1: speakers[2][1],
             PART2: speakers[2][2],
-            SNV: "ì•ˆ í„°íŠ¸ë ¸ë‹¤",
-            LNV: "í„°íŠ¸ë¦¬ì§€ ì•Šì•˜ë‹¤",
-            QUANT1: "ì„¸ ê°œì˜ ",
-            QUANT2: "ì„¸ ê°œ ì´ìƒì˜",
-            OBJ: "í’ì„ ",
-            PAR2: "ì„"
+            SNV: "안 터트렸다",
+            LNV: "터트리지 않았다",
+            QUANT1: "세 개의 ",
+            QUANT2: "세 개 이상의",
+            OBJ: "풍선",
+            PAR2: "을"
         },
         book: {
             pre_context: "images/scope_book_pre.jpg",
-            pre_sent_QN_plus: "ì±…ì´ ì—¬ëŸ ê¶Œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ìˆ™ì œë¡œ ì±…ì„ ëª¨ë‘ íŽ¼ì³ì„œ ì½ì–´ì•¼í•©ë‹ˆë‹¤.", // FIXME: negation? JS
-            pre_sent_QN: "ì±…ì´ ì—¬ì„¯ ê¶Œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ìˆ™ì œë¡œ ì±…ì„ ëª¨ë‘ íŽ¼ì³ì„œ ì½ì–´ì•¼í•©ë‹ˆë‹¤.",
-            pre_sent_NQ: "ì±…ì´ ë„¤ ê¶Œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ìˆ™ì œë¡œ ì±…ì„ ì„¸ ê¶Œ ì´ìƒ íŽ¼ì³ì„œ ì½ì–´ì•¼í•©ë‹ˆë‹¤. ",
+            pre_sent_QN_plus: "책이 여덟 권 있습니다. SUBJPART2 숙제로 책을 모두 펼쳐서 읽어야합니다.", // FIXME: negation? JS
+            pre_sent_QN: "책이 여섯 권 있습니다. SUBJPART2 숙제로 책을 모두 펼쳐서 읽어야합니다.",
+            pre_sent_NQ: "책이 네 권 있습니다. SUBJPART2 숙제로 책을 세 권 이상 펼쳐서 읽어야합니다. ",
             sent_context: "images/scope_book_post.jpg",
             SUBJ: speakers[3][0],
             PART1: speakers[3][1],
             PART2: speakers[3][2],
-            SNV: "ì•ˆ íŽ¼ì³¤ë‹¤",
-            LNV: "íŽ¼ì¹˜ì§€ ì•Šì•˜ë‹¤",
-            QUANT1: "ì„¸ ê¶Œì˜ ",
-            QUANT2: "ì„¸ ê¶Œ ì´ìƒì˜",
-            OBJ: "ì±…",
-            PAR2: "ì„"
+            SNV: "안 펼쳤다",
+            LNV: "펼치지 않았다",
+            QUANT1: "세 권의 ",
+            QUANT2: "세 권 이상의",
+            OBJ: "책",
+            PAR2: "을"
         },
         box: {
             pre_context: "images/scope_box_pre.jpg",
-            pre_sent_QN_plus: "ìƒìžê°€ ì—¬ëŸ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ì´ì‚¿ì§ ì •ë¦¬ë¥¼ ìœ„í•´ ìƒìžë¥¼ ëª¨ë‘ ì—´ì–´ë†”ì•¼í•©ë‹ˆë‹¤.",
-            pre_sent_QN: "ìƒìžê°€ ì—¬ì„¯ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ì´ì‚¿ì§ ì •ë¦¬ë¥¼ ìœ„í•´ ìƒìžë¥¼ ëª¨ë‘ ì—´ì–´ë†”ì•¼í•©ë‹ˆë‹¤.",
-            pre_sent_NQ: "ìƒìžê°€ ë„¤ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ì´ì‚¿ì§ ì •ë¦¬ë¥¼ ìœ„í•´ ìƒìžë¥¼ ì„¸ ê°œ ì´ìƒ ì—´ì–´ë†”ì•¼í•©ë‹ˆë‹¤.",
+            pre_sent_QN_plus: "상자가 여덟 개 있습니다. SUBJPART2 이삿짐 정리를 위해 상자를 모두 열어놔야합니다.",
+            pre_sent_QN: "상자가 여섯 개 있습니다. SUBJPART2 이삿짐 정리를 위해 상자를 모두 열어놔야합니다.",
+            pre_sent_NQ: "상자가 네 개 있습니다. SUBJPART2 이삿짐 정리를 위해 상자를 세 개 이상 열어놔야합니다.",
             sent_context: "images/scope_box_post.jpg",
             SUBJ: speakers[4][0],
             PART1: speakers[4][1],
             PART2: speakers[4][2],
-            SNV: "ì•ˆ ì—´ì—ˆë‹¤",
-            LNV: "ì—´ì§€ ì•Šì•˜ë‹¤",
-            QUANT1: "ì„¸ ê°œì˜ ",
-            QUANT2: "ì„¸ ê°œ ì´ìƒì˜",
-            OBJ: "ìƒìž",
-            PAR2: "ë¥¼"
+            SNV: "안 열었다",
+            LNV: "열지 않았다",
+            QUANT1: "세 개의 ",
+            QUANT2: "세 개 이상의",
+            OBJ: "상자",
+            PAR2: "를"
         },
         cup: {
             pre_context: "images/scope_cup_pre.jpg",
-            pre_sent_QN_plus: "ì»µì´ ì—´ ê°œ ìžˆìŠµë‹ˆë‹¤. ì•„ë¹ ëŠ” SUBJì—ê²Œ ì»µì„ ëª¨ë‘ ì”»ì–´ì„œ ë’¤ì§‘ì–´ ë†“ìœ¼ë¼ê³  í–ˆìŠµë‹ˆë‹¤.",
-            pre_sent_QN: "ì»µì´ ì—¬ëŸ ê°œ ìžˆìŠµë‹ˆë‹¤. ì•„ë¹ ëŠ” SUBJì—ê²Œ ì»µì„ ëª¨ë‘ ì”»ì–´ì„œ ë’¤ì§‘ì–´ ë†“ìœ¼ë¼ê³  í–ˆìŠµë‹ˆë‹¤.",
-            pre_sent_NQ: "ì»µì´ ì—¬ì„¯ ê°œ ìžˆìŠµë‹ˆë‹¤. ì•„ë¹ ëŠ” SUBJì—ê²Œ ì»µì„ ë„¤ ê°œ ì´ìƒ ì”»ì–´ì„œ ë’¤ì§‘ì–´ ë†“ìœ¼ë¼ê³  í–ˆìŠµë‹ˆë‹¤.", // fixme: ì¤‘ì—? ì¤‘?
+            pre_sent_QN_plus: "컵이 열 개 있습니다. 아빠는 SUBJ에게 컵을 모두 씻어서 뒤집어 놓으라고 했습니다.",
+            pre_sent_QN: "컵이 여덟 개 있습니다. 아빠는 SUBJ에게 컵을 모두 씻어서 뒤집어 놓으라고 했습니다.",
+            pre_sent_NQ: "컵이 여섯 개 있습니다. 아빠는 SUBJ에게 컵을 네 개 이상 씻어서 뒤집어 놓으라고 했습니다.", // fixme: 중에? 중?
             sent_context: "images/scope_cup_post.jpg",
             SUBJ: speakers[5][0],
             PART1: speakers[5][1],
             PART2: speakers[5][2],
-            SNV: "ì•ˆ ë’¤ì§‘ì—ˆë‹¤",
-            LNV: "ë’¤ì§‘ì§€ ì•Šì•˜ë‹¤",
-            QUANT1: "ë„¤ ê°œì˜ ",
-            QUANT2: "ë„¤ ê°œ ì´ìƒì˜",
-            OBJ: "ì»µ",
-            PAR2: "ì„"
+            SNV: "안 뒤집었다",
+            LNV: "뒤집지 않았다",
+            QUANT1: "네 개의 ",
+            QUANT2: "네 개 이상의",
+            OBJ: "컵",
+            PAR2: "을"
         },
         paper: {
             pre_context: "images/scope_paper_pre.jpg",
-            pre_sent_QN_plus: "ì¢…ì´ê°€ ì—´ ê°œ ìžˆìŠµë‹ˆë‹¤. ì—„ë§ˆëŠ” SUBJì—ê²Œ ì¢…ì´ë¥¼ ëª¨ë‘ êµ¬ê²¨ì„œ ë²„ë¦¬ë¼ê³  í–ˆìŠµë‹ˆë‹¤.",
-            pre_sent_QN: "ì¢…ì´ê°€ ì—¬ëŸ ê°œ ìžˆìŠµë‹ˆë‹¤. ì—„ë§ˆëŠ” SUBJì—ê²Œ ì¢…ì´ë¥¼ ëª¨ë‘ êµ¬ê²¨ì„œ ë²„ë¦¬ë¼ê³  í–ˆìŠµë‹ˆë‹¤.",
-            pre_sent_NQ: "ì¢…ì´ê°€ ì—¬ì„¯ ê°œ ìžˆìŠµë‹ˆë‹¤. ì—„ë§ˆëŠ” SUBJì—ê²Œ ì¢…ì´ë¥¼ ë„¤ ê°œ ì´ìƒ êµ¬ê²¨ì„œ ë²„ë¦¬ë¼ê³  í–ˆìŠµë‹ˆë‹¤.",
+            pre_sent_QN_plus: "종이가 열 개 있습니다. 엄마는 SUBJ에게 종이를 모두 구겨서 버리라고 했습니다.",
+            pre_sent_QN: "종이가 여덟 개 있습니다. 엄마는 SUBJ에게 종이를 모두 구겨서 버리라고 했습니다.",
+            pre_sent_NQ: "종이가 여섯 개 있습니다. 엄마는 SUBJ에게 종이를 네 개 이상 구겨서 버리라고 했습니다.",
             sent_context: "images/scope_paper_post.jpg",
             SUBJ: speakers[6][0],
             PART1: speakers[6][1],
             PART2: speakers[6][2],
-            SNV: "ì•ˆ êµ¬ê²¼ë‹¤",
-            LNV: "êµ¬ê¸°ì§€ ì•Šì•˜ë‹¤",
-            QUANT1: "ë„¤ ìž¥ì˜ ",
-            QUANT2: "ë„¤ ìž¥ ì´ìƒì˜",
-            OBJ: "ì¢…ì´",
-            PAR2: "ë¥¼"
+            SNV: "안 구겼다",
+            LNV: "구기지 않았다",
+            QUANT1: "네 장의 ",
+            QUANT2: "네 장 이상의",
+            OBJ: "종이",
+            PAR2: "를"
         },
         pencil: {
             pre_context: "images/scope_pencil_pre.jpg",
-            pre_sent_QN_plus: "SUBJPART2 ì—°í•„ì„ ì—´ ê°œ ê°€ì§€ê³  ìžˆìŠµë‹ˆë‹¤. ë™ìƒê³¼ì˜ ë‚´ê¸°ì—ì„œ ì´ê¸°ë ¤ë©´ ìž¬ë¹¨ë¦¬ ì—°í•„ì„ ëª¨ë‘ ë¶€ëŸ¬ëœ¨ë ¤ì•¼ í•©ë‹ˆë‹¤.", //fixme: neg!
-            pre_sent_QN: "SUBJPART2 ì—°í•„ì„ ì—¬ëŸ ê°œ ê°€ì§€ê³  ìžˆìŠµë‹ˆë‹¤. ë™ìƒê³¼ì˜ ë‚´ê¸°ì—ì„œ ì´ê¸°ë ¤ë©´ ìž¬ë¹¨ë¦¬ ì—°í•„ì„ ëª¨ë‘ ë¶€ëŸ¬ëœ¨ë ¤ì•¼ í•©ë‹ˆë‹¤.",
-            pre_sent_NQ: "SUBJPART2 ì—°í•„ì„ ì—¬ì„¯ ê°œ ê°€ì§€ê³  ìžˆìŠµë‹ˆë‹¤. ë™ìƒê³¼ì˜ ë‚´ê¸°ì—ì„œ ì´ê¸°ë ¤ë©´ ìž¬ë¹¨ë¦¬ ì—°í•„ì„ ë„¤ ê°œ ì´ìƒ ë¶€ëŸ¬ëœ¨ë ¤ì•¼ í•©ë‹ˆë‹¤.",
+            pre_sent_QN_plus: "SUBJPART2 연필을 열 개 가지고 있습니다. 동생과의 내기에서 이기려면 재빨리 연필을 모두 부러뜨려야 합니다.", //fixme: neg!
+            pre_sent_QN: "SUBJPART2 연필을 여덟 개 가지고 있습니다. 동생과의 내기에서 이기려면 재빨리 연필을 모두 부러뜨려야 합니다.",
+            pre_sent_NQ: "SUBJPART2 연필을 여섯 개 가지고 있습니다. 동생과의 내기에서 이기려면 재빨리 연필을 네 개 이상 부러뜨려야 합니다.",
             sent_context: "images/scope_pencil_post.jpg",
             SUBJ: speakers[7][0],
             PART1: speakers[7][1],
             PART2: speakers[7][2],
-            SNV: "ì•ˆ ë¶€ëŸ¬ëœ¨ë ¸ë‹¤",
-            LNV: "ë¶€ëŸ¬ëœ¨ë¦¬ì§€ ì•Šì•˜ë‹¤",
-            QUANT1: "ë„¤ ê°œì˜ ",
-            QUANT2: "ë„¤ ê°œ ì´ìƒì˜",
-            OBJ: "ì—°í•„",
-            PAR2: "ì„"
+            SNV: "안 부러뜨렸다",
+            LNV: "부러뜨리지 않았다",
+            QUANT1: "네 개의 ",
+            QUANT2: "네 개 이상의",
+            OBJ: "연필",
+            PAR2: "을"
         },
         triangle: {
             pre_context: "images/scope_triangle_pre.jpg",
-            pre_sent_QN_plus: "ì„¸ëª¨ê°€ ì—¬ëŸ ê°œ ìžˆìŠµë‹ˆë‹¤. ì•„ë¹ ëŠ” SUBJì—ê²Œ ì„¸ëª¨ë¥¼ ëª¨ë‘ ìƒ‰ì¹ í•˜ë¼ê³  í–ˆìŠµë‹ˆë‹¤.", //fixme: neg!
-            pre_sent_QN: "ì„¸ëª¨ê°€ ì—¬ì„¯ ê°œ ìžˆìŠµë‹ˆë‹¤. ì•„ë¹ ëŠ” SUBJì—ê²Œ ì„¸ëª¨ë¥¼ ëª¨ë‘ ìƒ‰ì¹ í•˜ë¼ê³  í–ˆìŠµë‹ˆë‹¤.",
-            pre_sent_NQ: "ì„¸ëª¨ê°€ ë„¤ ê°œ ìžˆìŠµë‹ˆë‹¤. ì•„ë¹ ëŠ” SUBJì—ê²Œ ì„¸ëª¨ë¥¼ ì„¸ ê°œ ì´ìƒ ìƒ‰ì¹ í•˜ë¼ê³  í–ˆìŠµë‹ˆë‹¤.",
+            pre_sent_QN_plus: "세모가 여덟 개 있습니다. 아빠는 SUBJ에게 세모를 모두 색칠하라고 했습니다.", //fixme: neg!
+            pre_sent_QN: "세모가 여섯 개 있습니다. 아빠는 SUBJ에게 세모를 모두 색칠하라고 했습니다.",
+            pre_sent_NQ: "세모가 네 개 있습니다. 아빠는 SUBJ에게 세모를 세 개 이상 색칠하라고 했습니다.",
             sent_context: "images/scope_triangle_post.jpg",
             SUBJ: speakers[8][0],
             PART1: speakers[8][1],
             PART2: speakers[8][2],
-            SNV: "ì•ˆ ì¹ í–ˆë‹¤",
-            LNV: "ì¹ í•˜ì§€ ì•Šì•˜ë‹¤",
-            QUANT1: "ì„¸ ê°œì˜ ",
-            QUANT2: "ì„¸ ê°œ ì´ìƒì˜",
-            OBJ: "ì„¸ëª¨",
-            PAR2: "ë¥¼"
+            SNV: "안 칠했다",
+            LNV: "칠하지 않았다",
+            QUANT1: "세 개의 ",
+            QUANT2: "세 개 이상의",
+            OBJ: "세모",
+            PAR2: "를"
         },
         bowling: {
             pre_context: "images/scope_bowling_pre.jpg",
-            pre_sent_QN_plus: "ë³¼ë§í•€ì´ ì—´ ê°œ ì„œìžˆìŠµë‹ˆë‹¤. ì—„ë§ˆëŠ” SUBJPART1 ë³¼ë§í•€ì„ ëª¨ë‘ ë„˜ì–´ëœ¨ë¦¬ë©´ ì•„ì´ìŠ¤í¬ë¦¼ì„ ì‚¬ì£¼ê² ë‹¤ê³  ì•½ì†í–ˆìŠµë‹ˆë‹¤.", //fixme: neg!
-            pre_sent_QN: "ë³¼ë§í•€ì´ ì—¬ëŸ ê°œ ì„œìžˆìŠµë‹ˆë‹¤. ì—„ë§ˆëŠ” SUBJPART1 ë³¼ë§í•€ì„ ëª¨ë‘ ë„˜ì–´ëœ¨ë¦¬ë©´ ì•„ì´ìŠ¤í¬ë¦¼ì„ ì‚¬ì£¼ê² ë‹¤ê³  ì•½ì†í–ˆìŠµë‹ˆë‹¤.",
-            pre_sent_NQ: "ë³¼ë§í•€ì´ ì—¬ì„¯ ê°œ ì„œìžˆìŠµë‹ˆë‹¤. ì—„ë§ˆëŠ” SUBJPART1 ë³¼ë§í•€ì„ ë„¤ ê°œ ì´ìƒ ë„˜ì–´ëœ¨ë¦¬ë©´ ì•„ì´ìŠ¤í¬ë¦¼ì„ ì‚¬ì£¼ê² ë‹¤ê³  ì•½ì†í–ˆìŠµë‹ˆë‹¤.",
+            pre_sent_QN_plus: "볼링핀이 열 개 서있습니다. 엄마는 SUBJPART1 볼링핀을 모두 넘어뜨리면 아이스크림을 사주겠다고 약속했습니다.", //fixme: neg!
+            pre_sent_QN: "볼링핀이 여덟 개 서있습니다. 엄마는 SUBJPART1 볼링핀을 모두 넘어뜨리면 아이스크림을 사주겠다고 약속했습니다.",
+            pre_sent_NQ: "볼링핀이 여섯 개 서있습니다. 엄마는 SUBJPART1 볼링핀을 네 개 이상 넘어뜨리면 아이스크림을 사주겠다고 약속했습니다.",
             sent_context: "images/scope_bowling_post.jpg",
             SUBJ: speakers[9][0],
             PART1: speakers[9][1],
             PART2: speakers[9][2],
-            SNV: "ì•ˆ ë„˜ì–´ëœ¨ë ¸ë‹¤",
-            LNV: "ë„˜ì–´ëœ¨ë¦¬ì§€ ì•Šì•˜ë‹¤",
-            QUANT1: "ë„¤ ê°œì˜ ",
-            QUANT2: "ë„¤ ê°œ ì´ìƒì˜",
-            OBJ: "ë³¼ë§í•€",
-            PAR2: "ì„"
+            SNV: "안 넘어뜨렸다",
+            LNV: "넘어뜨리지 않았다",
+            QUANT1: "네 개의 ",
+            QUANT2: "네 개 이상의",
+            OBJ: "볼링핀",
+            PAR2: "을"
         },
         bucket: {
             pre_context: "images/scope_bucket_pre.jpg",
-            pre_sent_filler: "í†µì´ ì—¬ëŸ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 í†µì„ ëª¨ëž˜ë¡œ ì±„ì›Œì•¼í•©ë‹ˆë‹¤.",
+            pre_sent_filler: "통이 여덟 개 있습니다. SUBJPART2 통을 모래로 채워야합니다.",
             sent_context: "images/scope_bucket_post.jpg",
             SUBJ: speakers[10][0],
             PART1: speakers[10][1],
             PART2: speakers[10][2],
-            SNV: "ì•ˆ ì±„ì› ë‹¤",
-            LNV: "ì±„ìš°ì§€ ì•Šì•˜ë‹¤",
+            SNV: "안 채웠다",
+            LNV: "채우지 않았다",
             QUANT1: "",
             QUANT2: "",
-            OBJ: "í†µ",
-            PAR2: "ì„"
+            OBJ: "통",
+            PAR2: "을"
         },
         lock: {
             pre_context: "images/scope_lock_pre.jpg",
-            pre_sent_filler: "ìžë¬¼ì‡ ê°€ ì—¬ì„¯ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ìžë¬¼ì‡ ë¥¼ ê°€ëŠ¥í•œ ë§Žì´ ì—´ì–´ì•¼í•©ë‹ˆë‹¤.",
+            pre_sent_filler: "자물쇠가 여섯 개 있습니다. SUBJPART2 자물쇠를 가능한 많이 열어야합니다.",
             sent_context: "images/scope_lock_post.jpg",
             SUBJ: speakers[11][0],
             PART1: speakers[11][1],
             PART2: speakers[11][2],
-            SNV: "ì—´ì—ˆë‹¤",
-            LNV: "ì—´ì—ˆë‹¤",
-            QUANT1: "ì„¸ ê°œ ì´ìƒì˜",
-            QUANT2: "ì„¸ ê°œ ì´ìƒì˜",
-            OBJ: "ìžë¬¼ì‡ ",
-            PAR2: "ë¥¼"
+            SNV: "열었다",
+            LNV: "열었다",
+            QUANT1: "세 개 이상의",
+            QUANT2: "세 개 이상의",
+            OBJ: "자물쇠",
+            PAR2: "를"
         },
         apple: {
             pre_context: "images/scope_apple_pre.jpg",
-            pre_sent_filler: "ì‚¬ê³¼ê°€ ì—¬ì„¯ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ì‚¬ê³¼ë¥¼ ê°€ëŠ¥í•œ ë§Žì´ ë¨¹ì–´ì•¼í•©ë‹ˆë‹¤.",
+            pre_sent_filler: "사과가 여섯 개 있습니다. SUBJPART2 사과를 가능한 많이 먹어야합니다.",
             sent_context: "images/scope_apple_post.jpg",
             SUBJ: speakers[12][0],
             PART1: speakers[12][1],
             PART2: speakers[12][2],
-            SNV: "ë¨¹ì—ˆë‹¤",
-            LNV: "ë¨¹ì—ˆë‹¤",
-            QUANT1: "ë„¤ ê°œ ì´ìƒì˜",
-            QUANT2: "ë„¤ ê°œ ì´ìƒì˜",
-            OBJ: "ì‚¬ê³¼",
-            PAR2: "ë¥¼"
+            SNV: "먹었다",
+            LNV: "먹었다",
+            QUANT1: "네 개 이상의",
+            QUANT2: "네 개 이상의",
+            OBJ: "사과",
+            PAR2: "를"
         },
         crane: {
             pre_context: "images/scope_crane_pre.jpg",
-            pre_sent_filler: "ì¢…ì´ê°€ ì—¬ì„¯ ìž¥ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ì¢…ì´ë¡œ í•™ì„ ê°€ëŠ¥í•œ ë§Žì´ ì ‘ìœ¼ë ¤ í•©ë‹ˆë‹¤.",
+            pre_sent_filler: "종이가 여섯 장 있습니다. SUBJPART2 종이로 학을 가능한 많이 접으려 합니다.",
             sent_context: "images/scope_crane_post.jpg",
             SUBJ: speakers[13][0],
             PART1: speakers[13][1],
             PART2: speakers[13][2],
-            SNV: "ì ‘ì—ˆë‹¤",
-            LNV: "ì ‘ì—ˆë‹¤",
-            QUANT1: "ì„¸ ê°œ ì´ìƒì˜",
-            QUANT2: "ì„¸ ê°œ ì´ìƒì˜",
-            OBJ: "í•™",
-            PAR2: "ì„"
+            SNV: "접었다",
+            LNV: "접었다",
+            QUANT1: "세 개 이상의",
+            QUANT2: "세 개 이상의",
+            OBJ: "학",
+            PAR2: "을"
         },
         onion: {
             pre_context: "images/scope_onion_pre.jpg",
-            pre_sent_filler: "ì–‘íŒŒê°€ ë‘ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ì–‘íŒŒë¥¼ ìž˜ë¼ì•¼í•©ë‹ˆë‹¤.",
+            pre_sent_filler: "양파가 두 개 있습니다. SUBJPART2 양파를 잘라야합니다.",
             sent_context: "images/scope_onion_post.jpg",
             SUBJ: speakers[14][0],
             PART1: speakers[14][1],
             PART2: speakers[14][2],
-            SNV: "ì•ˆ ìž˜ëžë‹¤",
-            LNV: "ìžë¥´ì§€ ì•Šì•˜ë‹¤",
+            SNV: "안 잘랐다",
+            LNV: "자르지 않았다",
             QUANT1: "",
             QUANT2: "",
-            OBJ: "ì–‘íŒŒ",
-            PAR2: "ë¥¼"
+            OBJ: "양파",
+            PAR2: "를"
         },
         egg: {
             pre_context: "images/scope_egg_pre.jpg",
-            pre_sent_filler: "ë‹¬ê±€ì´ ë„¤ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ë‹¬ê±€ì„ ê¹¨ëœ¨ë¦¬ì§€ ì•Šê³  ê·¸ëŒ€ë¡œ ë‘ë ¤ í•©ë‹ˆë‹¤.",
+            pre_sent_filler: "달걀이 네 개 있습니다. SUBJPART2 달걀을 깨뜨리지 않고 그대로 두려 합니다.",
             sent_context: "images/scope_egg_post.jpg",
             SUBJ: speakers[15][0],
             PART1: speakers[15][1],
             PART2: speakers[15][2],
-            SNV: "ì•ˆ ê¹¨ëœ¨ë ¸ë‹¤",
-            LNV: "ê¹¨ëœ¨ë¦¬ì§€ ì•Šì•˜ë‹¤",
+            SNV: "안 깨뜨렸다",
+            LNV: "깨뜨리지 않았다",
             QUANT1: "",
             QUANT2: "",
-            OBJ: "ë‹¬ê±€",
-            PAR2: "ì„"
+            OBJ: "달걀",
+            PAR2: "을"
         },
         umbrella: {
             pre_context: "images/scope_umbrella_pre.jpg",
-            pre_sent_filler: "ìš°ì‚°ì´ ì—¬ì„¯ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ìš°ì‚°ì„ ê°€ëŠ¥í•œ ë§Žì´ íŽ¼ì³ì•¼í•©ë‹ˆë‹¤.",
+            pre_sent_filler: "우산이 여섯 개 있습니다. SUBJPART2 우산을 가능한 많이 펼쳐야합니다.",
             sent_context: "images/scope_umbrella_post.jpg",
             SUBJ: speakers[16][0],
             PART1: speakers[16][1],
             PART2: speakers[16][2],
-            SNV: "íŽ¼ì³¤ë‹¤",
-            LNV: "íŽ¼ì³¤ë‹¤",
-            QUANT1: "ë„¤ ê°œ ì´ìƒì˜",
-            QUANT2: "ë„¤ ê°œ ì´ìƒì˜",
-            OBJ: "ìš°ì‚°",
-            PAR2: "ì„"
+            SNV: "펼쳤다",
+            LNV: "펼쳤다",
+            QUANT1: "네 개 이상의",
+            QUANT2: "네 개 이상의",
+            OBJ: "우산",
+            PAR2: "을"
         },
         door: {
             pre_context: "images/scope_door_pre.jpg",
-            pre_sent_filler: "ë¬¸ì´ ì„¸ ê°œ ìžˆìŠµë‹ˆë‹¤. SUBJPART2 ë¬¸ì„ ë‹«ì•„ì•¼í•©ë‹ˆë‹¤.",
+            pre_sent_filler: "문이 세 개 있습니다. SUBJPART2 문을 닫아야합니다.",
             sent_context: "images/scope_door_post.jpg",
             SUBJ: speakers[17][0],
             PART1: speakers[17][1],
             PART2: speakers[17][2],
-            SNV: "ì•ˆ ë‹«ì•˜ë‹¤",
-            LNV: "ë‹«ì§€ ì•Šì•˜ë‹¤",
+            SNV: "안 닫았다",
+            LNV: "닫지 않았다",
             QUANT1: "",
             QUANT2: "",
-            OBJ: "ë¬¸",
-            PAR2: "ì„"
+            OBJ: "문",
+            PAR2: "을"
         }
 
     }
@@ -783,7 +783,7 @@ var experiment = {
                 currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
             experiment.confirm1();
         } else {
-            $("#emailfield").html('<font color="red">ì§ˆë¬¸ì— ë‹µí•´ì£¼ì‹­ì‹œì˜¤. </font>');
+            $("#emailfield").html('<font color="red">질문에 답해주십시오. </font>');
         }
     },
 
@@ -797,7 +797,7 @@ var experiment = {
             experiment.participation_date = document.getElementById("participation_date").value;
             experiment.next();
         } else {
-            $("#namefield").html('<font color="red">ì„±ëª…ê³¼ ë‚ ì§œë¥¼ ì ì–´ì£¼ì‹­ì‹œì˜¤. </font>');
+            $("#namefield").html('<font color="red">성명과 날짜를 적어주십시오. </font>');
         }
     },
 
@@ -830,7 +830,7 @@ var experiment = {
         sent_materials = doSentSubs(sents, scale, domain);
 
         // Display pre_stage slide
-        //        $("#picture_pre").html("<center> ê³¼ì—° ì–´ë–»ê²Œ ë˜ì—ˆì„ê¹Œìš”? <center><br>");
+        //        $("#picture_pre").html("<center> 과연 어떻게 되었을까요? <center><br>");
         $("#sent_context_pre").html("<center>" + sent_materials[2] + " <center><br>");
         $("#picture_pre").html("<center><img src = " + sent_materials[4] + " height=275px><center><br>");
         $("#pre_sent").html("<center>" + sent_materials[5] + "<center><br>");
@@ -838,7 +838,7 @@ var experiment = {
         // Display the sentence stimuli
         $("#sent_context").html("<center>" + sent_materials[3] + " <center><br>");
         $("#picture").html("<center><img src = " + sent_materials[0] + " height=275px><center><br>");
-        $("#sent_question").html("<center>ìœ„ ê·¸ë¦¼ì— ë”°ë¥´ë©´ ë‹¤ìŒ ë¬¸ìž¥ì˜ ë‚´ìš©ì´ ì‚¬ì‹¤ì¸ê°€ìš”?</b></center>");
+        $("#sent_question").html("<center>위 그림에 따르면 다음 문장의 내용이 사실인가요?</b></center>");
         $("#sent").html("<center>\"<b>" + sent_materials[1] + "</b>\"<center><br>");
 
         experiment.scale = scale;
@@ -905,7 +905,7 @@ var experiment = {
 
             experiment.end();
         } else {
-            $("#messagedemo").html('<font color="red">ì§ˆë¬¸ì— ë‹µí•´ì£¼ì‹­ì‹œì˜¤. </font>');
+            $("#messagedemo").html('<font color="red">질문에 답해주십시오. </font>');
         }
     }
 }
