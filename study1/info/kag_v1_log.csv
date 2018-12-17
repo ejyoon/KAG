@@ -1,0 +1,25 @@
+﻿subid,seq,initial,age,sex,education,city,foreign_lang,foreign_lang_level,foreign_experience,foreign_years,disability
+1,past1,SeoM,23,M,Univ,Seoul,English,NA,NA,NA,no
+2,past2,SeoD,22,M,Univ,Seoul,English,Int,NA,NA,no
+3,3,LeeS,28,F,Bach,Seoul,Japanese,Int,NA,NA,no
+4,4,SeoE,24,F,Univ,Seoul,"English, Japanese",Beg,NA,NA,no
+5,5,LeeY,25,F,Bach,Seoul,English,Beg,NA,NA,no
+6,6,ChoE,25,M,Bach,Seoul,"English, Japanese",Int,NA,NA,no
+7,11,ShimM,23,F,Univ,Seoul,English,Beg,NA,NA,no
+8,16,KangS,26,M,Univ,"Seoul, KyoungSang",English,Beg,Vietnam,5,no
+9,10,YooS,22,F,Univ,Seoul,English,NA,NA,NA,no
+10,13,ImI,22,F,Univ,Seoul,English,Beg,NA,NA,no
+11,17,LeeJ,29,F,Bach,Seoul,English,Beg,"Florida, USA",10,no
+12,27,LeeM,22,F,Univ,Seoul,English,Int,NA,NA,no
+13,32,ChoJ,22,M,Univ,Seoul,English,Beg,NA,NA,no
+14,22,JunJ,20,F,Univ,Seoul,English,Int,Australia,0.5,no
+15,63,OhY,26,F,Bach,Seoul,"English, French",Beg,NA,NA,no
+16,58,BaikG,28,F,Bach,Seoul,"English,Japanese,French",Beg,NA,NA,no
+17,56,JangH,20,F,Univ,KyungSang,"English,Japanese",Beg,NA,NA,no
+18,41,LeeK,25,M,Postsec,Seoul,English,Beg,NA,NA,no
+19,50,KwonS,23,M,Univ,Seoul,"English,Chinese",Int,China,5,no
+20,47,ByunJ,23,M,Univ,Seoul,English,Int,NA,NA,no
+21,34,BaikS,26,M,Univ,Seoul,English,Int,NA,NA,no
+22,37,JungH,23,M,Univ,Seoul,English,Beg,NA,NA,no
+23,62,MoonS,22,F,Univ,Seoul,"English,Japanese",Beg,Canada,4,no
+24,57,NamA,24,F,Univ,Seoul,"English,Arabic",Beg,NA,NA,no

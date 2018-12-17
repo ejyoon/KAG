@@ -45,7 +45,7 @@ ms <- d1 %>%
     answer = mean(answer, na.rm=TRUE)
   ) %>%
   group_by(scope, quant_type, neg_type) %>%
-  multi_boot_standard(column = "answer", na.rm=TRUE) %>%
+  multi_boot_standard(col = "answer", na.rm=TRUE) %>%
   ungroup() %>%
   mutate(answer = mean,
          scope = factor(scope, labels=c("neg>Q", "Q>neg")),
@@ -75,7 +75,7 @@ ms <- d1 %>%
     answer = mean(answer, na.rm=TRUE)
   ) %>%
   group_by(scope, quant_type) %>%
-  multi_boot_standard(column = "answer", na.rm=TRUE) %>%
+  multi_boot_standard(col = "answer", na.rm=TRUE) %>%
   ungroup() %>%
   mutate(answer = mean)
 

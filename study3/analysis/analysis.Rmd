@@ -7,7 +7,6 @@ output: html_document
 
 ```{r}
 # preprocess
-rm(list=ls())
 library(ggplot2)
 library(dplyr)
 library(tidyr)
@@ -42,7 +41,7 @@ ms <- d1 %>%
     answer = mean(answer, na.rm=TRUE)
   ) %>%
   group_by(scope, quant_type, neg_type) %>%
-  multi_boot_standard(column = "answer", na.rm=TRUE) %>%
+  multi_boot_standard(col = "answer", na.rm=TRUE) %>%
   ungroup() %>%
   mutate(answer = mean,
          scope = factor(scope, labels=c("neg>Q", "Q>neg")),
@@ -72,7 +71,7 @@ ms <- d1 %>%
     answer = mean(answer, na.rm=TRUE)
   ) %>%
   group_by(scope, quant_type) %>%
-  multi_boot_standard(column = "answer", na.rm=TRUE) %>%
+  multi_boot_standard(col = "answer", na.rm=TRUE) %>%
   ungroup() %>%
   mutate(answer = mean)
 
@@ -118,7 +117,7 @@ ms <- d1 %>%
     answer = mean(answer, na.rm=TRUE)
   ) %>%
   group_by(scope) %>%
-  multi_boot_standard(column = "answer", na.rm=TRUE) %>%
+  multi_boot_standard(col = "answer", na.rm=TRUE) %>%
   ungroup() %>%
   mutate(answer = mean)
 
@@ -172,7 +171,7 @@ ms2 <- ms %>%
   summarise(count = n())
 
 ggplot(ms2, 
-       aes(x=QN, y=NQ, size=count)) +
+       aes(x=NQ, y=QN, size=count)) +
   # geom_raster(aes(fill = count)) +
   # stat_bin2d(aes(fill = ..count..), bins = 16) +
   geom_point() +

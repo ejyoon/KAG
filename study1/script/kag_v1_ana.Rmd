@@ -1,0 +1,236 @@
+---
+title: "kag v1 ana"
+author: "Erica Yoon"
+date: "8/28/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+library(langcog)
+library(ggthemes)
+```
+
+load data.
+
+```{r}
+d_raw <- read_csv(here("study1/raw_data/kag_v1_raw_data.csv"))  %>%
+  select(-seq) %>%
+  gather(key=trial, value=answer, -subid) %>%
+  mutate(answer = as.numeric(as.character(case_when(
+    answer == "y" ~ "1",
+    answer == "n" ~ "0",
+    TRUE ~ "NA"))
+  ))
+```
+
+merge and clean data.
+
+```{r}
+log <- read_csv(here("study1/info/kag_v1_log.csv"))
+
+info <- read_csv(here("study1/info/kag_v1_order.csv")) %>%
+  gather(key=trial, value=value, scope_test1:neg_test16) %>%
+  separate(trial, into=c("kind", "trial")) %>%
+  spread(kind, value)
+
+d <- left_join(d_raw, info) %>%
+  left_join(., log) %>%
+  filter(trial != "practice") %>%
+  mutate(scope = fct_relevel(scope, "Q"),
+    scope = fct_recode(scope,
+                            "neg > Q" = "N",
+                            "Q > neg" = "Q")) %>%
+  mutate(neg = fct_recode(neg,
+                          "long" = "L",
+                          "short" = "S"))
+
+```
+
+analysis.
+
+```{r}
+d %>%
+  filter(grepl("test", trial), !is.na(scope)) %>%
+  group_by(neg, scope, subid) %>%
+  summarise(answer = mean(answer, na.rm=T)) %>%
+  group_by(neg, scope) %>%
+  multi_boot_standard(col="answer") %>%
+  rename(answer=mean) %>%
+  ggplot(., aes(x=scope, y=answer, fill=neg)) +
+  geom_bar(position=position_dodge(), stat = "identity") +
+  geom_linerange(aes(ymin=ci_lower, ymax=ci_upper), position=position_dodge(width=.9), stat = "identity") +
+  geom_hline(yintercept = .5, lty=2) +
+  ylab("proportion acceptance") +
+  scale_fill_ptol()
+  
+  
+```
+
+distribution of responses.
+
+```{r}
+d %>% 
+  filter(grepl("test", trial), !is.na(neg), !is.na(scope)) %>%
+  group_by(subid, neg, scope) %>% 
+  summarise(mean = mean(answer, na.rm=T)) %>%
+  mutate(scope = fct_recode(scope,
+                            "Q" = "Q > neg", "N" = "neg > Q")) %>%
+  spread(scope, mean) %>%
+ggplot(., 
+       aes(x=N, y=Q)) +
+  # geom_raster(aes(fill = count)) +
+  # stat_bin2d(aes(fill = ..count..), bins = 16) +
+  geom_count() +
+  # geom_tile(aes(fill = count, width = .25, height = .25)) +
+  # xlim(c(0,1)) +
+  # ylim(c(0,1)) +
+  xlab("Acceptance rate for Neg > Q") +
+  ylab("Acceptance rate for Q > Neg") +
+  ggtitle("Acceptance rate for Q > Neg vs. Neg > Q") +
+  scale_size(guide = guide_legend(title = "Number of participants"), breaks=c(2, 4, 6, 8, 10)) 
+```
+
+load data from follow-up.
+
+```{r}
+d1 <- read.csv(here("study3/processed_data/KAGresults_org.csv"))
+log <- read.csv(here("study3/processed_data/KAGparticipantInfo_org.csv"))
+d1 <- left_join(d1, log) %>%
+  filter(!is.na(age)) 
+levels(d1$answer) <- c(0, 1)
+d1 <- d1 %>% 
+  mutate(answer = as.numeric(as.character(answer))) %>%
+  mutate(quant_type = substr(scope, 3, 3)) %>%
+  mutate(quant_type = ifelse(quant_type == "+", "≈more_than", "reg")) %>%
+  mutate(scope = substr(scope, 1, 2)) %>%
+  filter(!is.na(quant_type))
+```
+
+distribution of responses.
+
+```{r}
+# dividing by responses to neg>Q
+ms <- d1 %>%
+  filter(scope == "QN" | scope == "NQ") %>%
+  group_by(scope, subid) %>%
+  summarize(
+    answer = mean(answer, na.rm=TRUE)
+  )
+
+ggplot(data=ms, aes(x=answer)) + 
+  geom_histogram() + 
+  facet_wrap(~scope)
+
+
+# count participants by "scope access"
+ms1 <- ms %>%
+  filter(scope == "QN" | scope == "NQ") %>%
+  spread(scope, answer) %>%
+  mutate(NQ_acc = ifelse(NQ >= 0.75, 1, 0),
+         QN_acc = ifelse(QN >= 0.75, 1, 0),
+         scope_acc = ifelse(NQ_acc == 1 & QN_acc == 1, "both", 
+                            ifelse(NQ_acc == 1 & QN_acc == 0, "NQ_only", 
+                             ifelse(NQ_acc == 0 & QN_acc == 1, "QN_only", "neither")))) %>%
+  mutate(scope_acc = factor(scope_acc, levels = c("QN_only", "NQ_only", "both", "neither")),
+         subid = as.factor(subid))
+
+p <- ggplot(ms1, 
+            aes(x=scope_acc, fill=scope_acc))
+p + 
+  geom_bar(stat="count")
+
+ms2 <- ms %>%
+  spread(scope, answer) %>%
+  group_by(NQ, QN) %>%
+  summarise(count = n())
+
+ggplot(ms2, 
+       aes(x=NQ, y=QN, size=count)) +
+  # geom_raster(aes(fill = count)) +
+  # stat_bin2d(aes(fill = ..count..), bins = 16) +
+  geom_point() +
+  # geom_tile(aes(fill = count, width = .25, height = .25)) +
+  # xlim(c(0,1)) +
+  # ylim(c(0,1)) +
+  xlab("Acceptance rate for Neg > Q") +
+  ylab("Acceptance rate for Q > Neg") +
+  ggtitle("Acceptance rate for Q > Neg vs. Neg > Q") +
+  scale_size(guide = guide_legend(title = "Number of participants"), breaks=c(2, 4, 6, 8, 10)) 
+
+
+
+```
+
+bind data together.
+
+```{r}
+d0 <- d
+
+d <- rbind(
+  d0 %>% 
+    mutate(expt = "Expt 1") %>%
+  mutate(scope = fct_recode(scope,
+                            "QN" = "Q > neg", "NQ" = "neg > Q")) %>%
+    filter(grepl("test", trial)) %>%
+    select(expt, subid, neg, scope, answer),
+  d1 %>%
+    mutate(expt = "Expt 2") %>%
+    filter(grepl("test", trial)) %>%
+    rename(neg = neg_type) %>%
+    select(expt, subid, neg, scope, answer)
+)
+
+```
+
+plot proportions together.
+
+```{r}
+d %>%
+  filter(!is.na(scope)) %>%
+  mutate(scope = fct_relevel(scope, "QN"),
+    scope = fct_recode(scope,
+                            "neg > Q" = "NQ",
+                            "Q > neg" = "QN")) %>%
+  group_by(expt, neg, scope, subid) %>%
+  summarise(answer = mean(answer, na.rm=T)) %>%
+  group_by(expt, neg, scope) %>%
+  multi_boot_standard(col="answer") %>%
+  rename(answer=mean) %>%
+  ggplot(., aes(x=scope, y=answer, fill=neg)) +
+  geom_bar(position=position_dodge(), stat = "identity") +
+  geom_linerange(aes(ymin=ci_lower, ymax=ci_upper), position=position_dodge(width=.9), stat = "identity") +
+  facet_grid(.~expt) +
+  geom_hline(yintercept = .5, lty=2) +
+  ylab("proportion acceptance") +
+  scale_fill_ptol()
+  
+  
+```
+
+plot distribution together.
+
+```{r}
+ms <- d %>% 
+  filter(!is.na(neg), !is.na(scope)) %>%
+  group_by(expt, subid, scope) %>% 
+  summarise(mean = mean(answer, na.rm=T)) %>%
+  spread(scope, mean)
+
+ggplot(ms, 
+       aes(x=NQ, y=QN)) +
+  geom_jitter(data=filter(ms, NQ<=.5 | QN<=.5)) +
+  # scale_size(guide = guide_legend(title = "Number of participants", override.aes = list(col="black")), breaks=c(2, 4, 6, 8, 10)) +  
+  facet_grid(.~expt) +
+  xlab("Acceptance rate for Neg > Q") +
+  ylab("Acceptance rate for Q > Neg") +
+  ggtitle("Acceptance rate for Q > Neg vs. Neg > Q") +
+  geom_jitter(col="red", data=filter(ms, NQ>.5 & QN>.5)) +
+  xlim(-0.1,1.1) +
+  ylim(-0.1,1.1) +
+
+  theme_few()
+
+```
