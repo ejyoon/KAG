@@ -45,6 +45,7 @@ function doSentSubs(sents, scale, domain) {
     neg = sents["scales"][scale]["neg"];
     pre_context = sents["domains"][domain]["pre_context"];
     context = sents["domains"][domain]["sent_context"];
+    video = sents["domains"][domain]["video_context"];
     presentence = sents["scales"][scale]["sent_pre"];
     postsentence = sents["scales"][scale]["sent_post"];
     pre_sent = sents["scales"][scale]["pre_sent"];
@@ -82,22 +83,6 @@ function doSentSubs(sents, scale, domain) {
     //    }    
     pre_sent = pre_sent.replace("SUBJ", SUBJ).replace("SUBJ", SUBJ).replace("SUBJ", SUBJ).replace("PART1", PART1).replace("PART1", PART1).replace("PART2", PART2).replace("SNV", SNV).replace("LNV", LNV).replace("QUANT1", QUANT1).replace("QUANT2", QUANT2).replace("OBJ", OBJ).replace("PAR2", PAR2).replace("scope", scope);
 
-    // conditioning by scope, so that pre-context scaffolds only one of the two scopes per condition
-    //    if (cond == 1) {
-    //        if (scope == "QN") {
-    //        pre_sent = pre_sent.replace("PRE_SENT",PRE_SENT)
-    //        } else if (scope == "QN+") {
-    //        pre_sent = pre_sent.replace("PRE_SENT",PRE_SENT1)            
-    //        } else {
-    //        pre_sent = pre_sent.replace("PRE_SENT","")
-    //        }
-    //    } else {
-    //        if (scope == "NQ" || scope == "NQ+") {
-    //        pre_sent = pre_sent.replace("PRE_SENT",PRE_SENT)
-    //        } else {
-    //        pre_sent = pre_sent.replace("PRE_SENT","")
-    //        }
-    //    }
     // pre-context scaffolds the scope under question all the time
     if (scope == "NQ" || scope == "NQ+" || scope == "QN" || scope == "filler") {
         pre_sent = pre_sent.replace("PRE_SENT", PRE_SENT)
@@ -107,7 +92,7 @@ function doSentSubs(sents, scale, domain) {
         pre_sent = pre_sent.replace("PRE_SENT", "")
     }
 
-    return [context, quant, presentence, postsentence, pre_context, pre_sent];
+    return [context, quant, presentence, postsentence, pre_context, pre_sent, video];
 }
 
 // ############ LOAD CONDITION #############
@@ -123,7 +108,6 @@ var cond = random(2) + 1; // (1-6)
 
 
 // ############################## BP Changes Configuration settings ##############################
-// FIXME: ask ppl about whether the sentence sounds natural?
 speakers = shuffle([["철수", "가", "는"], ["민준", "이", "은"], ["지호", "가", "는"], ["주원", "이", "은"], ["지우", "가", "는"], ["서연", "이", "은"], ["민서", "가", "는"], ["지아", "가", "는"], ["하은", "이", "는"], ["서윤", "이", "은"], ["태민", "이", "은"], ["재승", "이", "은"], ["은지", "가", "는"], ["사랑", "이", "는"], ["우석", "이", "은"], ["성진", "이", "은"], ["해령", "이", "은"], ["주미", "가", "는"]]);
 
 var myimages = new Array();
@@ -397,6 +381,7 @@ var sents = {
             pre_sent_QN: "",
             pre_sent_NQ: "",
             sent_context: "images/training001.jpg",
+            video_context: "videos/actions/SAM_1707.mp4",
             SUBJ: speakers[0][0],
             PART1: speakers[0][1],
             PART2: speakers[0][2],
@@ -830,13 +815,13 @@ var experiment = {
         sent_materials = doSentSubs(sents, scale, domain);
 
         // Display pre_stage slide
-        //        $("#picture_pre").html("<center> 과연 어떻게 되었을까요? <center><br>");
         $("#sent_context_pre").html("<center>" + sent_materials[2] + " <center><br>");
         $("#picture_pre").html("<center><img src = " + sent_materials[4] + " height=275px><center><br>");
         $("#pre_sent").html("<center>" + sent_materials[5] + "<center><br>");
 
         // Display the sentence stimuli
         $("#sent_context").html("<center>" + sent_materials[3] + " <center><br>");
+        $("#video_context").html("<center><video width=\"320\" src=" + sent_materials[6] + " controls autoplay></video> <center><br>");
         $("#picture").html("<center><img src = " + sent_materials[0] + " height=275px><center><br>");
         $("#sent_question").html("<center>위 그림에 따르면 다음 문장의 내용이 사실인가요?</b></center>");
         $("#sent").html("<center>\"<b>" + sent_materials[1] + "</b>\"<center><br>");
@@ -846,26 +831,6 @@ var experiment = {
         experiment.scope = scope;
         experiment.neg = neg;
         experiment.quant = quant;
-
-        //        if (response_logged) {
-        //	    nextButton1.blur();
-        //        // save data
-        //        var dataforTrial = experiment.email  + "," + experiment.subid + "," + experiment.time
-        //        dataforTrial += "," + scale + "," + domain + "," + sent_materials[2] + "," + sent_materials[0] + "," + sent_materials[1] + "," + document.getElementsByName("judgment") + "\n";
-        //		$.post("http://langcog.stanford.edu/cgi-bin/EJY/KAG/KAGstudysave.php", {postresult_string : dataforTrial});	
-        //
-        //	    
-        //	    // uncheck radio buttons
-        //	    for (i = 0; i < radio.length; i++) {
-        //		radio[i].checked = false
-        //	    }
-        //	    experiment.next();
-        //	} else {
-        //	    $("#testMessage").html('<font color="red">' + 
-        //				   'Please make a response!' + 
-        //				   '</font>');
-        //	}
-
     },
 
     //	go to debriefing slide
@@ -873,21 +838,6 @@ var experiment = {
         showSlide("debriefing");
     },
 
-    // submitcomments function
-//    submit_comments: function () {
-//        if ($('input[name="korean_age"]:checked').val() &&
-//            $('input[name="english_age"]:checked').val() && $('input[name="korean_speech"]:checked').val()) {
-//            // save responses
-//            var dataforTrial = experiment.email + "," + experiment.subid + "," + experiment.time
-//            dataforTrial += "," + "DEMOGRAPHICS" + "," + " " + "," + " "
-//            dataforTrial += "," + $('input[name="korean_age"]:checked').val() + "," +
-//                $('input[name="english_age"]:checked').val()
-//            dataforTrial += "," + $('input[name="korean_speech"]:checked').val() + "," +
-//                document.getElementById("other_langs").value + "\n";
-//
-//            $.post("http://stanford.edu/group/langcog/cgi-bin/EJY/KAG/KAGstudysave.php", {
-//                postresult_string: dataforTrial
-//            });
     submit_comments: function() {
 	        if ($('input[name="gender"]:checked').val() && document.getElementById("age").value &&
             $('input[name="education"]:checked').val() && $('input[name="english_age"]:checked').val() && $('input[name="foreign_time"]:checked').val()){            
