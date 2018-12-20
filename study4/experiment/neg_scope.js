@@ -181,7 +181,9 @@ preloading("images/NQ_balloon_post.jpg",
     "images/filler_umbrella_post.jpg",
     "images/filler_umbrella_pre.jpg",
     "images/training001.jpg",
-    "images/training002.jpg");
+    "images/training002.jpg",
+           
+          );
 
 
 
@@ -912,18 +914,19 @@ var experiment = {
 
         // Display pre_stage slide
         //        $("#sent_context_pre").html("<center>" + sent_materials[2] + " <center><br>");
-        $("#sent_context_pre").html("<center><video width=\"500\" src=\"videos/actions/" + sent_materials[4] + "\" controls autoplay></video> <center><br>");
+        $("#sent_context_pre").html("<center><video width=\"500\" controls autoplay oncanplaythrough=\"\"><source src=\"videos/actions/" + sent_materials[4] + "\" type=\"video/mp4\">Your browser does not support HTML5 video.</video><center><br>");
         $("#picture_pre").html("<center><img src = " + sent_materials[4] + " height=275px><center><br>");
 //        $("#pre_sent").html("<center>" + sent_materials[5] + "<center><br>");
         $("#pre_sent").html("<center>다음 상황을 잘 보세요.<center><br>");
 
         // Display the sentence stimuli
         $("#sent_context").html("<center>" + sent_materials[3] + " <center><br>");
-        $("#video_context").html("<center><video width=\"500\" src=\"videos/sentences/" + sent_materials[0] + "\" controls autoplay></video> <center><br>");
+        $("#video_context").html("<center><video width=\"500\" controls autoplay oncanplaythrough=\"\"><source src=\"videos/sentences/" + sent_materials[0] + "\" type=\"video/mp4\">Your browser does not support HTML5 video.</video><center><br>");
         $("#picture").html("<center><img src = " + sent_materials[0] + " height=275px><center><br>");
         $("#sent_question").html("<center>위 그림에 따르면 다음 문장의 내용이 사실인가요?</b></center>");
         $("#sent").html("<center>\"<b>" + sent_materials[1] + "</b>\"<center><br>");
 
+                
         experiment.scale = scale;
         experiment.domain = domain;
         experiment.scope = scope;
